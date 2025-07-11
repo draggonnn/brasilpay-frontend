@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste - Brasil Apple</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .btn {
+            background: #28a745;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+        }
+        .btn:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🍎 Brasil Apple</h1>
+        <p>Site de teste funcionando!</p>
+        <p>Se você está vendo esta página, significa que o servidor Flask está funcionando corretamente.</p>
+        <a href="/" class="btn">Voltar ao Site Principal</a>
+        <a href="/api/status" class="btn">Testar API</a>
+    </div>
+    
+    <script>
+        console.log('Teste HTML carregado com sucesso!');
+        
+        // Testar se a API está funcionando
+        fetch('/api/status')
+            .then(response => response.json())
+            .then(data => {
+                console.log('API Status:', data);
+                document.body.innerHTML += '<div style="margin-top: 20px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 8px;"><h3>✅ API Status: ' + data.status + '</h3><p>' + data.message + '</p></div>';
+            })
+            .catch(error => {
+                console.error('Erro na API:', error);
+                document.body.innerHTML += '<div style="margin-top: 20px; padding: 20px; background: rgba(255,0,0,0.2); border-radius: 8px;"><h3>❌ Erro na API</h3><p>' + error.message + '</p></div>';
+            });
+    </script>
+</body>
+</html>
+
